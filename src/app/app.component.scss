@@ -7,6 +7,19 @@
 }
 
 .container .mat-drawer {
-  padding-left: 20px;
-  min-width: 200px;
+  width: 195px;
+}
+
+.sidenav {
+  padding: 20px;
+}
+
+.container .mat-drawer .mat-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
