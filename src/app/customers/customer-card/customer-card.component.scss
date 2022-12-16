@@ -1,0 +1,13 @@
+.card {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.header-image {
+  background-image: url('/assets/img/robby.png');
+  background-size: cover;
+}
+
+mat-card-actions .flex-spacer {
+  width: 100%;
+}
