@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { RepDialogComponent } from '../rep-dialog/rep-dialog.component';
 
@@ -22,7 +23,7 @@ export class CustomerNewComponent implements OnInit {
   emailFormControl!: FormControl;
   matcher = new MyErrorStateMatcher();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.emailFormControl = new FormControl('', [Validators.required, Validators.email]);
@@ -33,9 +34,17 @@ export class CustomerNewComponent implements OnInit {
       width: '250px',
       data: {},
     });
-
     dialogRef.afterClosed().subscribe((result) => {
       alert(`User chose ${result}`);
+    });
+  }
+
+  openUndoSnackbar() {
+    const snackbarRef = this.snackBar.open('Customer saved', 'UNDO', {
+      horizontalPosition: 'end',
+    });
+    snackbarRef.onAction().subscribe(() => {
+      alert('Undo that save!');
     });
   }
 }
