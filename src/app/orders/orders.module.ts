@@ -15,6 +15,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
@@ -31,6 +35,10 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatInputModule,
     // MatMomentDateModule,
     MatNativeDateModule,
+    MatCheckboxModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
 })
 export class OrdersModule {}
