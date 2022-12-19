@@ -7,9 +7,33 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatMenuModule],
-  exports: [CommonModule, MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+  ],
+  exports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatGridListModule,
+  ],
 })
 export class MaterialModule {}
