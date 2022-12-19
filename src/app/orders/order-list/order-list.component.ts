@@ -11,7 +11,7 @@ import { ELEMENT_DATA, OrderType } from './mock-data';
   styleUrls: ['./order-list.component.scss'],
 })
 export class OrderListComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['action', 'orderNumber', 'orderDate', 'description', 'total'];
+  displayedColumns: string[] = ['action', 'orderNumber', 'orderDate', 'description', 'total', 'actions'];
   dataSource = new MatTableDataSource<OrderType>(ELEMENT_DATA);
   // dataSource!: MatTableDataSource<OrderType>;
 
@@ -41,6 +41,10 @@ export class OrderListComponent implements OnInit, AfterViewInit {
     for (let elm of ELEMENT_DATA) {
       elm.isChecked = !elm.isChecked;
     }
+  }
+
+  deleteOrder(el: OrderType) {
+    console.log('el removed: ', el);
   }
 
   // loadData(pageIndex: number, pageSize: number) {
