@@ -35,10 +35,21 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field>
-          <input matInput placeholder="Your Birthdate" [matDatepicker]="picker" [max]="maxDate" />
+          <input
+            matInput
+            placeholder="Your Birthdate"
+            [matDatepicker]="picker"
+            [max]="maxDate"
+            ngModel
+            name="birthdate"
+            required
+          />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-checkbox ngModel name="agree" required color="primary">Agree to Terms and Conditions.</mat-checkbox>
       </mat-grid-tile>
       <mat-grid-tile>
         <button type="submit" mat-raised-button color="primary">Submit</button>
