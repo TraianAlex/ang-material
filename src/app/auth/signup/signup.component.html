@@ -34,6 +34,13 @@
         </mat-form-field>
       </mat-grid-tile>
       <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="Your Birthdate" [matDatepicker]="picker" [max]="maxDate" />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
         <button type="submit" mat-raised-button color="primary">Submit</button>
       </mat-grid-tile>
     </mat-grid-list>
