@@ -3,7 +3,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { ELEMENT_DATA, OrderType } from './mock-data';
+import { ELEMENT_DATA, OrderType } from '../../data/mock-data';
 
 @Component({
   selector: 'app-order-list',
