@@ -1,0 +1,19 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  display: flex;
+  gap: 1em;
+  margin-right: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}

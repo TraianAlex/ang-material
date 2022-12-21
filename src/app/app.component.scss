@@ -7,35 +7,15 @@
 }
 
 .container .mat-drawer {
-  width: 195px;
+  width: 173px;
 }
 
 .sidenav {
   padding: 20px;
 }
 
-.container .mat-drawer .mat-button {
-  display: block;
-  width: 100%;
-  text-align: left;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
-}
-
-a:hover,
-a:active {
-  color: lightgray;
-}
-
-.content {
-  display: flex;
-  gap: 1em;
-  margin-right: 1em;
-}
+// .container .mat-drawer .mat-button {
+//   display: block;
+//   width: 100%;
+//   text-align: left;
+// }

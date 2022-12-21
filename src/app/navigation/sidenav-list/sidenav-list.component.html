@@ -1,0 +1,21 @@
+<button color="primary" mat-button routerLink="/customers">Customers</button>
+<button mat-button routerLink="/customers/info">- - Info</button>
+<button mat-button routerLink="/customers/new">- - New</button>
+<button color="primary" mat-button routerLink="/orders">Orders</button>
+<button mat-button routerLink="/orders/new">- - New</button>
+<button color="primary" mat-button routerLink="/messages">Messages</button>
+<button mat-button routerLink="/messages/new">- - New</button>
+<mat-nav-list>
+  <a mat-list-item routerLink="/signup" (click)="onClose()">
+    <span matListItemTitle class="nav-caption"><mat-icon matListItemIcon>face</mat-icon>Signup</span>
+  </a>
+  <a mat-list-item routerLink="/login">
+    <span matListItemTitle class="nav-caption"><mat-icon matListItemIcon>input</mat-icon>Login</span>
+  </a>
+  <a mat-list-item routerLink="/training">
+    <span matListItemTitle class="nav-caption"><mat-icon matListItemIcon>fitness_center</mat-icon>Training</span>
+  </a>
+  <mat-list-item>
+    <button mat-button (click)="onClose()"><mat-icon>eject</mat-icon>Logout</button>
+  </mat-list-item>
+</mat-nav-list>
