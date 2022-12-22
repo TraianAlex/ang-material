@@ -6,8 +6,8 @@
     <span><a routerLink="/">Title</a></span>
     <span class="spacer"></span>
     <span class="content"
-      ><a routerLink="/signup">Signup</a><a routerLink="/login">Login</a><a routerLink="/training">Training</a
-      ><a>Logout</a></span
+      ><a *ngIf="!isAuth" routerLink="/signup">Signup</a><a *ngIf="!isAuth" routerLink="/login">Login</a
+      ><a *ngIf="isAuth" routerLink="/training">Training</a><a *ngIf="isAuth">Logout</a></span
     >
     <mat-icon>favorite</mat-icon>
     <button mat-icon-button [matMenuTriggerFor]="menu">
