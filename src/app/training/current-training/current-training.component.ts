@@ -13,7 +13,7 @@ import { StopTrainingDialogComponent } from '../stop-training-dialog/stop-traini
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;
   timer!: number | NodeJS.Timer;
-  @Output() trainingExit = new EventEmitter();
+  // @Output() trainingExit = new EventEmitter();
 
   constructor(private dialog: MatDialog, private trainingService: TrainingService) {}
 
@@ -27,10 +27,11 @@ export class CurrentTrainingComponent implements OnInit {
   }
 
   private startOrResumeTimer() {
-    const step = this.trainingService.getRunningExercise().duration / 100 * 1000;
+    const step = (this.trainingService.getRunningExercise().duration / 100) * 1000;
     this.timer = setInterval(() => {
       this.progress = this.progress + 1;
       if (this.progress >= 100) {
+        this.trainingService.completeExercise();
         clearInterval(this.timer);
       }
     }, step);
@@ -44,7 +45,8 @@ export class CurrentTrainingComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`User chose ${result}`);
       if (result) {
-        this.trainingExit.emit();
+        // this.trainingExit.emit();
+        this.trainingService.cancelExercise(this.progress);
       } else {
         this.startOrResumeTimer();
       }
