@@ -26,7 +26,7 @@ export class CurrentTrainingComponent implements OnInit {
 
   private startOrResumeTimer() {
     this.timer = setInterval(() => {
-      this.progress = this.progress + 5;
+      this.progress = this.progress + 1;
       if (this.progress >= 100) {
         clearInterval(this.timer);
       }
