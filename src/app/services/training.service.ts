@@ -11,6 +11,7 @@ import { Exercise } from '../training/exercise.model';
 export class TrainingService {
   exerciseChanged = new Subject<Exercise | null>();
   exercisesChanged = new Subject<Exercise[]>();
+  finishedExercisesChanged = new Subject<Exercise[]>();
   // private availableExercises: Exercise[] = [
   //   { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
   //   { id: 'touch-toes', name: 'Touch Toes', duration: 180, calories: 15 },
@@ -19,7 +20,7 @@ export class TrainingService {
   // ];
   private availableExercises: Exercise[] = [];
   private runningExercise!: Exercise;
-  private exercises: Exercise[] = [];
+  // private finishedExercises: Exercise[] = [];
 
   constructor(
     // private firestore: Firestore,
@@ -55,7 +56,7 @@ export class TrainingService {
   }
 
   completeExercise() {
-    this.exercises.push({
+    this.addDataToDatabase({
       ...this.runningExercise,
       date: new Date(),
       state: 'completed',
@@ -65,7 +66,7 @@ export class TrainingService {
   }
 
   cancelExercise(progress: number) {
-    this.exercises.push({
+    this.addDataToDatabase({
       ...this.runningExercise,
       duration: this.runningExercise.duration * (progress / 100),
       calories: this.runningExercise.calories * (progress / 100),
@@ -80,7 +81,17 @@ export class TrainingService {
     return { ...this.runningExercise };
   }
 
-  getCompletedOrCancelledExercises() {
-    return this.exercises.slice();
+  fetchCompletedOrCancelledExercises() {
+    //return this.finishedExercises.slice();
+    this.firestore2
+      .collection<Exercise>('finishedExercises')
+      .valueChanges()
+      .subscribe((exercises: Exercise[]) => {
+        this.finishedExercisesChanged.next(exercises);
+      });
+  }
+
+  private addDataToDatabase(exercise: Exercise) {
+    this.firestore2.collection('finishedExercises').add(exercise);
   }
 }
