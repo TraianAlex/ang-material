@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     // provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase), // working only with "skipLibCheck": true tsconfig
     AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
