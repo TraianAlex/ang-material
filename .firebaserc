@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ang-material-1f64d": {
+      "hosting": {
+        "ang-material": [
+          "ang-material-1f64d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ang-material-1f64d"
+  }
+}
