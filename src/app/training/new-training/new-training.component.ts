@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 
 import { TrainingService } from 'src/app/services/training.service';
+import { UiService } from 'src/app/services/ui.service';
 import { Exercise } from '../exercise.model';
 
 @Component({
@@ -19,15 +20,21 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
   //   { value: 'side-lunges', viewValue: 'Side Lunges' },
   //   { value: 'burpees', viewValue: 'Burpees' },
   // ];
-  exercises: Exercise[] = [];
+  exercises: Exercise[] | null = [];
   // exercises$!: Observable<Exercise[]>;
   exerciseSubscription!: Subscription;
+  isLoading = false;
+  private loadingSubs!: Subscription;
 
   constructor(
-    private trainingService: TrainingService // private firestore: Firestore,
+    private trainingService: TrainingService, // private firestore: Firestore,
+    private uiService: UiService
   ) {}
 
   ngOnInit(): void {
+    this.loadingSubs = this.uiService.loadingStateChanged.subscribe((isLoading) => {
+      this.isLoading = isLoading;
+    });
     // this.exercises = this.trainingService.getAvailableExercises();
 
     // const data = collection(this.firestore, 'availableExercices');
@@ -37,6 +44,10 @@ export class NewTrainingComponent implements OnInit, OnDestroy {
     this.exerciseSubscription = this.trainingService.exercisesChanged.subscribe(
       (exercises) => (this.exercises = exercises)
     );
+    this.fetchExercises();
+  }
+
+  fetchExercises() {
     this.trainingService.fetchAvailableExercises();
   }
 

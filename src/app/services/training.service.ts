@@ -4,13 +4,14 @@ import { Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Exercise } from '../training/exercise.model';
+import { UiService } from './ui.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrainingService {
   exerciseChanged = new Subject<Exercise | null>();
-  exercisesChanged = new Subject<Exercise[]>();
+  exercisesChanged = new Subject<Exercise[] | null>();
   finishedExercisesChanged = new Subject<Exercise[]>();
   // private availableExercises: Exercise[] = [
   //   { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
@@ -25,17 +26,20 @@ export class TrainingService {
 
   constructor(
     // private firestore: Firestore,
-    private firestore2: AngularFirestore
+    private firestore2: AngularFirestore,
+    private uiService: UiService
   ) {}
 
   fetchAvailableExercises() {
     // return this.availableExercises.slice();
+    this.uiService.loadingStateChanged.next(true);
     this.fbSubs.push(
       this.firestore2
         .collection<Exercise>('availableExercices')
         .snapshotChanges()
         .pipe(
           map((docArray) => {
+            // throw new Error();
             return docArray.map((doc) => {
               return {
                 id: doc.payload.doc.id,
@@ -48,12 +52,15 @@ export class TrainingService {
         )
         .subscribe({
           next: (exercises: Exercise[]) => {
+            this.uiService.loadingStateChanged.next(false);
             this.availableExercises = exercises;
             this.exercisesChanged.next([...this.availableExercises]);
           },
-          // error: (error) => {
-          //   console.log(error);
-          // },
+          error: (error) => {
+            this.uiService.loadingStateChanged.next(false);
+            this.uiService.showSnackbar('Fetching Exercises failed, please try again later', undefined, 3000);
+            this.exercisesChanged.next(null);
+          },
         })
     );
   }
@@ -100,9 +107,9 @@ export class TrainingService {
           next: (exercises: Exercise[]) => {
             this.finishedExercisesChanged.next(exercises);
           },
-          // error: (error) => {
-          //   console.log(error);
-          // },
+          error: (error) => {
+            console.log(error);
+          },
         })
     );
   }
