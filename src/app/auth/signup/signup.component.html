@@ -54,7 +54,10 @@
         >
       </mat-grid-tile>
       <mat-grid-tile style="margin-top: -40px">
-        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+        <button *ngIf="!isLoading" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">
+          Submit
+        </button>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
       </mat-grid-tile>
     </mat-grid-list>
   </form>
