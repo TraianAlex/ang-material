@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
 
 import { TrainingComponent } from './training.component';
 import { CurrentTrainingComponent } from './current-training/current-training.component';
@@ -18,6 +17,6 @@ import { StopTrainingDialogComponent } from './stop-training-dialog/stop-trainin
     PastTrainingsComponent,
     StopTrainingDialogComponent,
   ],
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule, SharedModule],
 })
 export class TrainingModule {}
