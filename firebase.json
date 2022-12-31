@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "ang-material",
-    "public": "dist/ang-material",
+    "public": "dist",
     "ignore": [
       "**/.*"
     ],
