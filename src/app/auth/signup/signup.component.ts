@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
     this.authService.registerUser({
       email: form.value.email,
       password: form.value.password,
@@ -34,6 +33,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.loadingSubs.unsubscribe();
+    this.loadingSubs?.unsubscribe();
   }
 }

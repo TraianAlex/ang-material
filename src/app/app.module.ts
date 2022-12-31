@@ -16,18 +16,11 @@ import { environment } from '../environments/environment';
 // import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AuthModule } from './auth/auth.module';
 import { TrainingModule } from './training/training.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    WelcomeComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, SidenavListComponent, WelcomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -37,8 +30,6 @@ import { TrainingModule } from './training/training.module';
     // provideAuth(() => getAuth()),
     // provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase), // working only with "skipLibCheck": true tsconfig
-    AngularFirestoreModule,
-    AngularFireAuthModule,
     AuthModule,
     TrainingModule,
   ],
