@@ -25,3 +25,10 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Authentication: Firestore
+
+Back-end:
+docker run -d -p 8080:80 -v /Users/traianalexandru/projects/opusone/ang-material/src/assets/db.json:/data/db.json clue/json-server
+docker stop <container-hash>
+docker start <container-hash>
