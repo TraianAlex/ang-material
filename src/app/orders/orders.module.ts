@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { OrdersRoutingModule } from './orders-routing.module';
+import { ArticlesModule } from './articles/articles.modules';
 
 import { OrdersComponent } from './orders.component';
 import { OrderListComponent } from './order-list/order-list.component';
@@ -27,6 +28,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CommonModule,
     ReactiveFormsModule,
     OrdersRoutingModule,
+    ArticlesModule,
     MatTabsModule,
     MatButtonModule,
     MatCardModule,

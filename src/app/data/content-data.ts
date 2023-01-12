@@ -7,3 +7,28 @@ export const fillerContent = Array.from(
      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
 );
+
+export interface ArticleNode {
+  name: string;
+  children?: ArticleNode[];
+}
+
+export const TREE_DATA: ArticleNode[] = [
+  {
+    name: 'Fruit',
+    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
+  },
+  {
+    name: 'Vegetables',
+    children: [
+      {
+        name: 'Green',
+        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
+      },
+      {
+        name: 'Orange',
+        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
+      },
+    ],
+  },
+];
