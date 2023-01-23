@@ -14,6 +14,7 @@ export const environment = {
     measurementId: 'G-QC852WN5XG',
   },
   production: false,
+  token: mySecrets.token,
 };
 
 /*

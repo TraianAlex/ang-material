@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'orders', loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule) },
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then((m) => m.CustomersModule) },
   { path: 'messages', loadChildren: () => import('./messages/messages.module').then((m) => m.MessagesModule) },
+  { path: 'football', loadChildren: () => import('./football-standings/football-standings.module').then(m => m.FootballStandingsModule) },
 ];
 
 @NgModule({

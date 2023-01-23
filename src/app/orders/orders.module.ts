@@ -8,6 +8,7 @@ import { ArticlesModule } from './articles/articles.modules';
 import { OrdersComponent } from './orders.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderNewComponent } from './order-new/order-new.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,10 +21,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatStepperModule } from '@angular/material/stepper';
 // import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
-  declarations: [OrdersComponent, OrderListComponent, OrderNewComponent],
+  declarations: [OrdersComponent, OrderListComponent, OrderNewComponent, StepperComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -41,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSortModule,
     MatTableModule,
     MatPaginatorModule,
+    MatStepperModule,
   ],
 })
 export class OrdersModule {}
