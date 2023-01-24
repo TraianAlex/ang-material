@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { Team } from '../models/team.model';
 import { ApiRespone } from '../models/api.model';
+import { debug, LoggingLevel } from 'src/app/shared/debug';
 
 @Injectable({
   providedIn: 'root',
@@ -32,8 +33,11 @@ export class StandingService {
   constructor(private http: HttpClient) {}
 
   fetchStandings(league: keyof typeof this.leagues): void {
-    this.http.get<ApiRespone>(`${this.API}${this.leagues[`${league}`]}/standings`).subscribe((response: ApiRespone) => {
-      this._teams.next(response.standings[0].table);
-    });
+    this.http
+      .get<ApiRespone>(`${this.API}${this.leagues[`${league}`]}/standings`)
+      .pipe(debug(LoggingLevel.ERROR, 'Loading standings from backend'))
+      .subscribe((response: ApiRespone) => {
+        this._teams.next(response.standings[0].table);
+      });
   }
 }
