@@ -17,9 +17,14 @@ import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthModule } from './auth/auth.module';
+import { ChartBaseComponent } from './charts/chart-base/chart-base.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { LineChartComponent } from './charts/line-chart/line-chart.component';
+import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SidenavListComponent, WelcomeComponent],
+  declarations: [AppComponent, HeaderComponent, SidenavListComponent, WelcomeComponent, ChartBaseComponent, BarChartComponent, LineChartComponent, PieChartComponent, DoughnutChartComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
