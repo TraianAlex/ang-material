@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +25,22 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, SidenavListComponent, WelcomeComponent, ChartBaseComponent, BarChartComponent, LineChartComponent, PieChartComponent, DoughnutChartComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    WelcomeComponent,
+    ChartBaseComponent,
+    BarChartComponent,
+    LineChartComponent,
+    PieChartComponent,
+    DoughnutChartComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule,
     // provideFirebaseApp(() => initializeApp(environment.firebase)),
     // provideAuth(() => getAuth()),

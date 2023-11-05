@@ -15,6 +15,9 @@ export const environment = {
   },
   production: false,
   token: mySecrets.token,
+  gsEndPoint: 'https://sheets.googleapis.com/v4/spreadsheets',
+  gsApiKey: mySecrets.gsApiKey,
+  gsSheetId: mySecrets.gsSheetId,
 };
 
 /*

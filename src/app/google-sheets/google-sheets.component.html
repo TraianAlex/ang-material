@@ -1,0 +1,16 @@
+<h5>Single cell</h5>
+{{ cellData }}
+<h5>Multiple columns and rows by range</h5>
+<pre>
+  {{ dataByRange | json }}
+  <!-- <div *ngFor="let data of sheetData">
+  {{ data | json }}
+  </div> -->
+</pre>
+<h5>All sheet data</h5>
+<pre>
+  {{ sheetData | json }}
+  <!-- <div *ngFor="let data of sheetData">
+  {{ data | json }}
+  </div> -->
+</pre>
