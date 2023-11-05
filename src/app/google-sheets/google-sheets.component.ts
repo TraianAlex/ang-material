@@ -15,20 +15,15 @@ import { GsService } from './services/gs.service';
 export class GoogleSheetsComponent implements OnInit, OnDestroy {
   destroy$ = new Subject<void>();
   sheetName = 'experiences';
-  // range: A1:A6 => obj, C1:C3 => obj
-  range = `A1:D6`;
-  // range: H3:H3 => string, H5 => string
-  cell = `H3:H3`;
+  cell = 'H3';
   sheetData!: any[];
-  dataByRange!: any[];
   cellData!: string | undefined;
 
   constructor(private sheetService: GsService) {}
 
   ngOnInit() {
-    // all sheet data
     this.sheetService
-      .getSheetData(`${this.sheetName}`)
+      .getSheetData(this.sheetName)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
@@ -39,28 +34,13 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
           console.error(error);
         },
       });
-    // get by a specific range
     this.sheetService
-      .getSheetData(`${this.sheetName}!${this.range}`)
+      .getOneCell(this.sheetName, this.cell)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {
-          this.sheetService.hasColumn(this.range);
-          this.dataByRange = data;
-          console.log(data);
-        },
-        error: (error) => {
-          console.error(error);
-        },
-      });
-    // get one cell
-    this.sheetService
-      .getSheetData(`${this.sheetName}!${this.cell}`)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (data: any) => {
-          this.cellData = this.sheetService.getOneCell(data, this.cell);
-          console.log(this.sheetService.getOneCell(data, this.cell));
+          this.cellData = data;
+          console.log('one cell -> ', data);
         },
         error: (error) => {
           console.error(error);

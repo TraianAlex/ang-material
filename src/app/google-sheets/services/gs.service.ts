@@ -14,45 +14,70 @@ interface GoogleSpreadsheetsResponse {
 export class GsService {
   constructor(public http: HttpClient) {}
 
-  public getSheetData(range: string) {
-    const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${range}?key=${environment.gsApiKey}`;
+  public getSheetData(sheetName: string) {
+    const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}?key=${environment.gsApiKey}`;
     return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
       map((response: any) => {
         const values = response.values;
         if (!values || values.length < 2) {
-          return values; // return the actual value of the cell
+          return [];
         }
-        // const keys = values[0]; // First row as keys
-        // const data = [];
-        // for (let i = 1; i < values.length; i++) {
-        //   const item = {} as any;
-        //   for (let j = 0; j < keys.length; j++) {
-        //     item[keys[j]] = values[i][j];
-        //   }
-        //   data.push(item);
-        // }
-        // return data;
         return this.rowsToObjects(values);
       }),
       catchError(this.handleError)
     );
   }
 
+  // range: A1:D6 => obj, C1:C3 => obj
+  public getSheetDataByRange(sheetName: string, from: string, to: string) {
+    this.isHeader(from);
+    const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}!${from}:${to}?key=${environment.gsApiKey}`;
+    return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
+      map((response: any) => {
+        const values = response.values;
+        if (!values || values.length < 2) {
+          return [];
+        }
+        return this.rowsToObjects(values);
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  // range: H3:H3 => string, H5 => string
+  public getOneCell(sheetName: string, cell: string) {
+    this.isOneCell(cell);
+    const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}!${cell}?key=${environment.gsApiKey}`;
+    return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
+      map((response: any) => {
+        const values = response.values;
+        if (!values) {
+          return [];
+        } else if (values.length < 2) {
+          return values[0][0];
+        }
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // for range (one cell): H3:H3 => string or H5 => string
-  public getOneCell(data: any[], range: string) {
+  private isOneCell(range: string) {
     const target = range.split(':');
     if ([...target].includes(':') === false || target[0] === target[1]) {
-      return String(data[0]);
+      return true;
     } else {
       throw new Error('Select only one cell');
     }
   }
 
   // check if the first segment is the first row
-  public hasColumn(range: string) {
-    const target = range.split(':');
-    const column = target[0][1];
-    if (column === '1') {
+  private isHeader(from: string) {
+    if (!from || from.length < 2) {
+      throw new Error('Wrong cell format!');
+    }
+    const cellIndex = from.length === 2 ? from[1] : from[2];
+    if (cellIndex === '1') {
       return true;
     } else {
       throw new Error('First segment has to be first row!');
@@ -82,3 +107,14 @@ export class GsService {
     return throwError('Something bad happened; please try again later.');
   }
 }
+
+// const keys = values[0]; // First row as keys
+// const data = [];
+// for (let i = 1; i < values.length; i++) {
+//   const item = {} as any;
+//   for (let j = 0; j < keys.length; j++) {
+//     item[keys[j]] = values[i][j];
+//   }
+//   data.push(item);
+// }
+// return data;
