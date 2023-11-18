@@ -18,6 +18,8 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
   cell = 'H3';
   sheetData!: any[];
   cellData!: string | undefined;
+  htmlData = '';
+  rowData!: any[];
 
   constructor(private sheetService: GsService) {}
 
@@ -41,6 +43,23 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
         next: (data: any) => {
           this.cellData = data;
           console.log('one cell -> ', data);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+    this.sheetService
+      .getRawData(this.sheetName)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (data: any) => {
+          this.rowData = data;
+          console.table(data);
+          for (const [one, two, three] of data) {
+            console.log(`${one} | ${two} | ${three}`);
+            this.htmlData += `<tr><td>${one}</td><td>${two}</td><td>${three}</td></tr>`;
+          }
+          document.getElementById('myTable')!.innerHTML = this.htmlData;
         },
         error: (error) => {
           console.error(error);

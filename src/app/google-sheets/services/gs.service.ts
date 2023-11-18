@@ -14,6 +14,16 @@ interface GoogleSpreadsheetsResponse {
 export class GsService {
   constructor(public http: HttpClient) {}
 
+  public getRawData(sheetName: string) {
+    const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}?key=${environment.gsApiKey}`;
+    return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
+      map((response: any) => {
+        return response.values;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   public getSheetData(sheetName: string) {
     const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}?key=${environment.gsApiKey}`;
     return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
