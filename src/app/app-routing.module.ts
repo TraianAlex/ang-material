@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'google-sheets',
     loadChildren: () => import('./google-sheets/google-sheets.module').then((m) => m.GoogleSheetsModule),
   },
+  {
+    path: 'basic',
+    loadChildren: () => import('./rxjs-basic/routes').then((m) => m.RXJS_BASIC),
+  },
 ];
 
 @NgModule({

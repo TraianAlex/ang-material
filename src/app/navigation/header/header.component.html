@@ -4,6 +4,11 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span><a routerLink="/">NG Fitness</a></span>
+    <button mat-button [matMenuTriggerFor]="belowMenu">RxJS</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="/basic">Basic</button>
+      <button mat-menu-item>Item 2</button>
+    </mat-menu>
     <span class="spacer"></span>
     <span class="content"
       ><a *ngIf="!isAuth" routerLink="/signup">Signup</a><a *ngIf="!isAuth" routerLink="/login">Login</a
