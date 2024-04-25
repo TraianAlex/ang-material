@@ -1,10 +1,5 @@
 import { Route } from '@angular/router';
 
-import { RxjsBasic2Component } from '../rxjs-basic2/rxjs-basic.component';
-import { RxjsBasic3Component } from './rxjs-basic.component';
-
-
-
 export const RXJS_BASIC: Route[] = [
   // {
   //   path: '',
@@ -15,13 +10,21 @@ export const RXJS_BASIC: Route[] = [
   //     { path: 'basic2', component: RxjsBasic3Component },
   //   ],
   // },
-  // {
-  //   path: '',
-  //   redirectTo: 'basic3',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'basic3',
-  //   loadComponent: () => import('../rxjs-basic2/rxjs-basic.component').then((m) => m.RxjsBasic2Component),
-  // },
+  {
+    path: '',
+    redirectTo: 'basic31',
+    pathMatch: 'full',
+  },
+  {
+    path: 'basic31',
+    loadComponent: () => import('./rxjs-basic31/rxjs-basic.component').then((m) => m.RxjsBasic31Component),
+  },
+  {
+    path: 'basic32',
+    loadComponent: () => import('./rxjs-basic32/rxjs-basic.component').then((m) => m.RxjsBasic32Component),
+  },
+  {
+    path: 'basic33',
+    loadComponent: () => import('./rxjs-basic33/rxjs-basic.component').then((m) => m.RxjsBasic33Component),
+  }
 ];

@@ -1,7 +1,4 @@
 import { Route } from '@angular/router';
-import { RxjsBasic2Component } from '../rxjs-basic2/rxjs-basic.component';
-import { RxjsBasic3Component } from '../rxjs-basic3/rxjs-basic.component';
-
 
 export const RXJS_BASIC: Route[] = [
   // {
@@ -13,13 +10,21 @@ export const RXJS_BASIC: Route[] = [
   //     { path: 'basic3', component: RxjsBasic3Component },
   //   ],
   // },
-  // {
-  //   path: '',
-  //   redirectTo: 'basic2',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'basic2',
-  //   loadComponent: () => import('../rxjs-basic2/rxjs-basic.component').then((m) => m.RxjsBasic2Component),
-  // },
+  {
+    path: '',
+    redirectTo: 'basic21',
+    pathMatch: 'full',
+  },
+  {
+    path: 'basic21',
+    loadComponent: () => import('./rxjs-basic21/rxjs-basic.component').then((m) => m.RxjsBasic21Component),
+  },
+  {
+    path: 'basic22',
+    loadComponent: () => import('./rxjs-basic22/rxjs-basic.component').then((m) => m.RxjsBasic22Component),
+  },
+  {
+    path: 'basic23',
+    loadComponent: () => import('./rxjs-basic23/rxjs-basic.component').then((m) => m.RxjsBasic23Component),
+  }
 ];
