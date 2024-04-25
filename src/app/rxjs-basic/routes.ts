@@ -1,8 +1,4 @@
 import { Route } from '@angular/router';
-import { RxjsBasicComponent } from './rxjs-basic.component';
-import { RxjsBasic2Component } from './rxjs-basic2/rxjs-basic.component';
-import { RxjsBasic3Component } from './rxjs-basic3/rxjs-basic.component';
-import { RxjsBasic11Component } from './rxjs-basic1/rxjs-basic11/rxjs-basic.component';
 
 export const RXJS_BASIC: Route[] = [
   // {
@@ -28,11 +24,11 @@ export const RXJS_BASIC: Route[] = [
   {
     path: 'basic2',
     loadComponent: () => import('./rxjs-basic2/rxjs-basic.component').then((m) => m.RxjsBasic2Component),
-    //loadChildren: () => import('./rxjs-basic2/rxjs-basic.component').then((m) => m.RxjsBasic2Component),
+    //loadChildren: () => import('./rxjs-basic2/routes').then((m) => m.RXJS_BASIC),
   },
   {
     path: 'basic3',
     loadComponent: () => import('./rxjs-basic3/rxjs-basic.component').then((m) => m.RxjsBasic3Component),
-    //loadChildren: () => import('./rxjs-basic3/rxjs-basic.component').then((m) => m.RxjsBasic3Component),
+    //loadChildren: () => import('./rxjs-basic3/routes').then((m) => m.RXJS_BASIC),
   },
 ];

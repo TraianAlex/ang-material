@@ -1,8 +1,4 @@
 import { Route } from '@angular/router';
-import { RxjsBasic1Component } from './rxjs-basic.component';
-import { RxjsBasic11Component } from './rxjs-basic11/rxjs-basic.component';
-import { RxjsBasic12Component } from './rxjs-basic12/rxjs-basic.component';
-import { RxjsBasic13Component } from './rxjs-basic13/rxjs-basic.component';
 
 export const RXJS_BASIC: Route[] = [
   // {
