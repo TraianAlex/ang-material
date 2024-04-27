@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
+import { MaterialModule } from '../../../material.module';
 import { FirstPageComponent } from './FirstPage/first-page.component';
 import { SecondPageComponent } from './SecondPage/second-page.component';
 

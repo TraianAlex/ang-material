@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Observable, from, last } from 'rxjs';
 import { MaterialModule } from '../../../material.module';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rxjs-basic',

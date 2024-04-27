@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { MaterialModule } from '../../../material.module';
-import { RouterLink } from '@angular/router';
 
 const SNOWMAN_IMAGE = '../assets/icons/snowman image.jpg';
 const SUN_IMAGE = '../assets/icons/sun.jpg';

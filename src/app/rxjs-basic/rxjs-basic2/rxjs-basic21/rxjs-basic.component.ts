@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
-import { Subject, map } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { Subject, map } from 'rxjs';
+import { MaterialModule } from '../../../material.module';
 
 interface Weather {
   day: string;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
 import { Subject, filter } from 'rxjs';
+import { MaterialModule } from '../../../material.module';
 
 interface Weather {
   day: string;

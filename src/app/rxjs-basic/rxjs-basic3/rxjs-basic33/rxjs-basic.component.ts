@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
 import { Observable, Subject, delay, of, switchMap } from 'rxjs';
+import { MaterialModule } from '../../../material.module';
 
 interface Weather {
   city: string;

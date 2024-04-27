@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
 import { Subject, delay, exhaustMap, from, toArray } from 'rxjs';
+import { MaterialModule } from '../../../material.module';
 
 @Component({
   selector: 'app-rxjs-basic',
