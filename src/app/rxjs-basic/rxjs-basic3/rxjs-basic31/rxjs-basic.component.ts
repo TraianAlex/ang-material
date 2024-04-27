@@ -35,6 +35,7 @@ export class RxjsBasic31Component implements OnInit {
     const input = (event.target as HTMLInputElement).value;
     this.inputTemperature = parseInt(input);
   }
+
   setFeelsLike() {
     this.feelsLikeSubject$.next(this.inputFeelsLikeTemperature);
   }
