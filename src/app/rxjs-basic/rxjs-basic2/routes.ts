@@ -26,5 +26,9 @@ export const RXJS_BASIC: Route[] = [
   {
     path: 'basic23',
     loadComponent: () => import('./rxjs-basic23/rxjs-basic.component').then((m) => m.RxjsBasic23Component),
-  }
+  },
+  {
+    path: 'basic24',
+    loadComponent: () => import('./rxjs-basic24/rxjs-basic.component').then((m) => m.RxjsBasic24Component),
+  },
 ];

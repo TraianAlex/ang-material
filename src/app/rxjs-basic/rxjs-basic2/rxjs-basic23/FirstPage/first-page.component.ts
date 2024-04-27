@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MaterialModule } from '../../../material.module';
-import { RouterLink } from '@angular/router';
-import { Subject, filter } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { Subject } from 'rxjs';
+import { filter, takeUntil } from 'rxjs/operators';
 
 interface Weather {
   day: string;
@@ -9,15 +9,16 @@ interface Weather {
 }
 
 @Component({
-  selector: 'app-rxjs-basic',
+  selector: 'first-page',
+  templateUrl: './first-page.component.html',
+  styleUrls: ['./first-page.component.css'],
   standalone: true,
-  imports: [MaterialModule, RouterLink],
-  templateUrl: './rxjs-basic.component.html',
-  styleUrls: ['./rxjs-basic.component.scss'],
+  imports: [MatCardModule],
 })
-export class RxjsBasic22Component {
+export class FirstPageComponent implements OnInit, OnDestroy {
   displayWeather: Weather[] = [];
-  weatherSubject = new Subject<Weather>();
+  weatherSubject$ = new Subject<Weather>();
+  destroySubject$ = new Subject<void>();
 
   private weatherData = [
     {
@@ -51,20 +52,25 @@ export class RxjsBasic22Component {
   ];
 
   ngOnInit() {
-    this.weatherSubject
+    this.weatherSubject$
       .pipe(
+        takeUntil(this.destroySubject$),
         filter((weather) => {
-          return weather.temperature >= 77;
+          return weather.temperature >= 70;
         })
       )
       .subscribe((weather) => {
         this.displayWeather.push(weather);
       });
+
+    for (const weather of this.weatherData) {
+      this.weatherSubject$.next(weather);
+    }
   }
 
-  getWeatherData() {
-    for (const weather of this.weatherData) {
-      this.weatherSubject.next(weather);
-    }
+  ngOnDestroy() {
+    this.destroySubject$.next();
+    this.destroySubject$.complete();
+    console.log('Component Destroyed!');
   }
 }

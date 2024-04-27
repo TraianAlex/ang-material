@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../../material.module';
 import { RouterLink } from '@angular/router';
-import { Observable, Subject, delay, of, switchMap } from 'rxjs';
+import { Observable, Subject, delay, mergeMap, of } from 'rxjs';
 
 interface Weather {
   city: string;
@@ -16,14 +16,14 @@ interface Weather {
   templateUrl: './rxjs-basic.component.html',
   styleUrls: ['./rxjs-basic.component.scss'],
 })
-export class RxjsBasic33Component implements OnInit {
-  citySubject$ = new Subject<string>();
+export class RxjsBasic34Component implements OnInit {
   displayWeather: Weather[] = [];
+  citySubject$ = new Subject<string>();
 
   ngOnInit() {
     this.citySubject$
       .pipe(
-        switchMap((city) => {
+        mergeMap((city) => {
           return this.getWeather(city).pipe(delay(1000));
         })
       )
@@ -54,6 +54,7 @@ export class RxjsBasic33Component implements OnInit {
         humidity: 41,
       },
     };
+
     return of(weatherDataMap[city]);
   }
 }
