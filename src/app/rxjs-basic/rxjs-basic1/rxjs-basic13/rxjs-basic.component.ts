@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReplaySubject, Subscription } from 'rxjs';
 import { MaterialModule } from '../../../material.module';
@@ -10,13 +10,11 @@ import { MaterialModule } from '../../../material.module';
   templateUrl: './rxjs-basic.component.html',
   styleUrls: ['./rxjs-basic.component.scss'],
 })
-export class RxjsBasic13Component implements OnInit {
+export class RxjsBasic13Component {
   inputTemperature = 0;
   temperatureDataList: number[] = [];
   temperatureSubject3$ = new ReplaySubject<number>();
   replaySubscription: Subscription | undefined;
-
-  ngOnInit() {}
 
   setTemperature() {
     const temperature = this.inputTemperature;

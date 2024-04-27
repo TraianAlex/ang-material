@@ -14,8 +14,6 @@ import { SecondPageComponent } from './SecondPage/second-page.component';
 export class RxjsBasic23Component {
   displayFirstPage = true;
 
-  constructor() {}
-
   togglePages() {
     this.displayFirstPage = !this.displayFirstPage;
   }
