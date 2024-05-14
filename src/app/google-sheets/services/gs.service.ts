@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, map, catchError } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
 
 interface GoogleSpreadsheetsResponse {
   values: string[][];

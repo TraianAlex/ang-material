@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 // import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable, Subscription } from 'rxjs';
 
-import { TrainingService } from 'src/app/services/training.service';
-import { UiService } from 'src/app/services/ui.service';
+import { TrainingService } from '@services/training.service';
+import { UiService } from '@services/ui.service';
 import { Exercise } from '../exercise.model';
 
 @Component({

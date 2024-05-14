@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
-import { GsService } from 'src/app/google-sheets/services/gs.service';
+import { GsService } from '@app/google-sheets/services/gs.service';
 
 @Component({
   standalone: true,

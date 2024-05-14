@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { TrainingService } from 'src/app/services/training.service';
+import { TrainingService } from '@services/training.service';
 
 import { StopTrainingDialogComponent } from '../stop-training-dialog/stop-training-dialog.component';
 

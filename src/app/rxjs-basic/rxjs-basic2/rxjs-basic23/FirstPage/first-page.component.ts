@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import { MaterialModule } from '@app/material.module';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -13,7 +13,7 @@ interface Weather {
   templateUrl: './first-page.component.html',
   styleUrls: ['./first-page.component.css'],
   standalone: true,
-  imports: [MatCardModule],
+  imports: [MaterialModule],
 })
 export class FirstPageComponent implements OnInit, OnDestroy {
   displayWeather: Weather[] = [];

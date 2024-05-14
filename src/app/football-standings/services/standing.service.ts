@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { Team } from '../models/team.model';
 import { ApiRespone } from '../models/api.model';
-import { debug, LoggingLevel } from 'src/app/shared/debug';
+import { debug, LoggingLevel } from '@shared/debug';
 
 @Injectable({
   providedIn: 'root',

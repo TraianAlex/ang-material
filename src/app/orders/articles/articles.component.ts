@@ -2,7 +2,7 @@ import { FlatTreeControl } from '@angular/cdk/tree';
 import { Component } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 
-import { ArticleNode, TREE_DATA } from 'src/app/data/content-data';
+import { ArticleNode, TREE_DATA } from '@app/data/content-data';
 
 interface ArticleFlatNode {
   expandable: boolean;
