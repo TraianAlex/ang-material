@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, map, catchError } from 'rxjs';
 
@@ -12,9 +12,9 @@ interface GoogleSpreadsheetsResponse {
   providedIn: 'root',
 })
 export class GsService {
-  constructor(public http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  public getRawData(sheetName: string) {
+  getRawData$ = (sheetName: string) => {
     const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}?key=${environment.gsApiKey}`;
     return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
       map((response: any) => {
@@ -24,7 +24,7 @@ export class GsService {
     );
   }
 
-  public getSheetData(sheetName: string) {
+  getSheetData$ = (sheetName: string) => {
     const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}?key=${environment.gsApiKey}`;
     return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(
       map((response: any) => {
@@ -39,7 +39,7 @@ export class GsService {
   }
 
   // range: A1:D6 => obj, C1:C3 => obj
-  public getSheetDataByRange(sheetName: string, from: string, to: string) {
+  getSheetDataByRange$ = (sheetName: string, from: string, to: string) => {
     this.isHeader(from);
     const apiUrl = `${environment.gsEndPoint}/${environment.gsSheetId}/values/${sheetName}!${from}:${to}?key=${environment.gsApiKey}`;
     return this.http.get<GoogleSpreadsheetsResponse>(apiUrl).pipe(

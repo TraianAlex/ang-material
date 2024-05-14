@@ -1,12 +1,13 @@
 <h5>Single cell</h5>
-<pre>{{ cellData }}</pre>
+<pre>{{ cellData$ | async }}</pre>
+<hr>
 <h5>All sheet data</h5>
 <pre>
-  {{ sheetData | json }}
+  {{ sheetData$ | async | json }}
 </pre>
-
+<hr>
 <table id="myTable"></table>
-
+<hr>
 <table>
     <th>{{ rowData[0][0] }}</th> |
     <th>{{ rowData[0][1] }}</th> |
@@ -39,7 +40,7 @@
     <td>{{ row[13] }}</td> | -->
   </tr>
 </table>
-
+<hr>
 <table>
   <tr>
   <th *ngFor="let head of rowData[0]">
@@ -50,3 +51,4 @@
     <td *ngFor="let cell of row">{{cell}}</td>
   </tr>
 </table>
+<hr>
