@@ -18,6 +18,10 @@ export const environment = {
   gsEndPoint: 'https://sheets.googleapis.com/v4/spreadsheets',
   gsApiKey: mySecrets.gsApiKey,
   gsSheetId: mySecrets.gsSheetId,
+  characters: {
+    spreadsheetId: '1gSc_7WCmt-HuSLX01-Ev58VsiFuhbpYVo8krbPCvvqA',
+    worksheetName: 'Characters',
+  },
 };
 
 /*

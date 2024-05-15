@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { GsService } from './services/gs.service';
+import { environment } from '@env/environment';
 
 @Component({
   standalone: true,
@@ -15,6 +16,7 @@ import { GsService } from './services/gs.service';
 export class GoogleSheetsComponent implements OnInit, OnDestroy {
   private sheetService = inject(GsService);
   destroy$ = new Subject<void>();
+  spreadsheetId = environment.gsSheetId;
   sheetName = 'experiences';
   rowData!: any[];
   sheetData$!: Observable<any>;
@@ -23,7 +25,7 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sheetData$ = this.sheetService
-      .getSheetData$(this.sheetName)
+      .getSheetData$(this.spreadsheetId, this.sheetName)
       // .pipe(takeUntil(this.destroy$))
       // .subscribe({
       //   next: (data: any) => {
@@ -36,7 +38,7 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
       // });
 
     this.cellData$ = this.sheetService
-      .getOneCell(this.sheetName, this.cell)
+      .getOneCell(this.spreadsheetId, this.sheetName, this.cell)
       // .pipe(takeUntil(this.destroy$))
       // .subscribe({
       //   next: (data: any) => {
@@ -49,7 +51,7 @@ export class GoogleSheetsComponent implements OnInit, OnDestroy {
       // });
 
     this.sheetService
-      .getRawData$(this.sheetName)
+      .getRawData$(this.spreadsheetId, this.sheetName)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (data: any) => {

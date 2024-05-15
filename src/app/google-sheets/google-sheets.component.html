@@ -1,19 +1,42 @@
-<h5>Single cell</h5>
+<h3>Single cell getOneCell$</h3>
 <pre>{{ cellData$ | async }}</pre>
-<hr>
-<h5>All sheet data</h5>
+<hr />
+<h3>All sheet data getSheetData$</h3>
 <pre>
   {{ sheetData$ | async | json }}
 </pre>
-<hr>
+<hr />
+<h3>Display data with getSheetData$</h3>
+<div *ngIf="sheetData$ | async as sheetData">
+  <div *ngFor="let data of sheetData">
+    {{ data.company }}
+    <ul>
+      <li>
+        {{ data['Skill 1'] }}
+      </li>
+      <li>
+        {{ data['Skill 2'] }}
+      </li>
+      <li>
+        {{ data['Skill 3'] }}
+      </li>
+    </ul>
+  </div>
+</div>
+<hr />
+<h3>Display data with getRawData$</h3>
 <table id="myTable"></table>
-<hr>
+<hr />
+<h3>Display data with getRawData$</h3>
 <table>
-    <th>{{ rowData[0][0] }}</th> |
-    <th>{{ rowData[0][1] }}</th> |
-    <th>{{ rowData[0][2] }}</th> |
-    <th>{{ rowData[0][3] }}</th>
-    <!-- <th>{{ rowData[0][4] }}</th>
+  <th>{{ rowData[0][0] }}</th>
+  |
+  <th>{{ rowData[0][1] }}</th>
+  |
+  <th>{{ rowData[0][2] }}</th>
+  |
+  <th>{{ rowData[0][3] }}</th>
+  <!-- <th>{{ rowData[0][4] }}</th>
     <th>{{ rowData[0][5] }}</th>
     <th>{{ rowData[0][6] }}</th>
     <th>{{ rowData[0][7] }}</th>
@@ -24,9 +47,12 @@
     <th>{{ rowData[0][12] }}</th>
     <th>{{ rowData[0][13] }}</th> -->
   <tr *ngFor="let row of rowData.slice(1)">
-    <td>{{ row[0] }}</td> |
-    <td>{{ row[1] }}</td> |
-    <td>{{ row[2] }}</td> |
+    <td>{{ row[0] }}</td>
+    |
+    <td>{{ row[1] }}</td>
+    |
+    <td>{{ row[2] }}</td>
+    |
     <td>{{ row[3] }}</td>
     <!-- <td>{{ row[4] }}</td> |
     <td>{{ row[5] }}</td> |
@@ -40,15 +66,16 @@
     <td>{{ row[13] }}</td> | -->
   </tr>
 </table>
-<hr>
+<hr />
+<h3>Display data with getRawData$</h3>
 <table>
   <tr>
-  <th *ngFor="let head of rowData[0]">
-    {{ head }}
-  </th>
-</tr>
+    <th *ngFor="let head of rowData[0]">
+      {{ head }}
+    </th>
+  </tr>
   <tr *ngFor="let row of rowData.slice(1)">
-    <td *ngFor="let cell of row">{{cell}}</td>
+    <td *ngFor="let cell of row">{{ cell }}</td>
   </tr>
 </table>
-<hr>
+<hr />
