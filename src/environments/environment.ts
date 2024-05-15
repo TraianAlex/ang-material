@@ -19,7 +19,7 @@ export const environment = {
   gsApiKey: mySecrets.gsApiKey,
   gsSheetId: mySecrets.gsSheetId,
   characters: {
-    spreadsheetId: '1gSc_7WCmt-HuSLX01-Ev58VsiFuhbpYVo8krbPCvvqA',
+    spreadsheetId: mySecrets.characters.spreadsheetId,
     worksheetName: 'Characters',
   },
 };
