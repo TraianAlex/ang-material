@@ -19,11 +19,12 @@ export class ContentComponent implements OnInit {
   spreadsheetId = environment.gsSheetId;
   spreadsheetId2 = environment.characters.spreadsheetId;
   sheetName = 'content';
-  sheetName2 = environment.characters.worksheetName;
+  sheetName2 = 'characters';
   from = 'A1';
   to = 'F2';
   dataByRange$!: Observable<any>;
   activeCharacters$!: Observable<Character[]>;
+  activeCharacters2$!: Observable<Character[]>;
 
   ngOnInit(): void {
     this.dataByRange$ = this.sheetService.getSheetDataByRange$(this.spreadsheetId, this.sheetName, this.from, this.to);
@@ -39,6 +40,13 @@ export class ContentComponent implements OnInit {
     // });
 
     this.activeCharacters$ = this.sheetService.getActive<Character>(
+      this.spreadsheetId,
+      this.sheetName2,
+      characterAttributesMapping,
+      'Active'
+    );
+
+    this.activeCharacters2$ = this.sheetService.getActive<Character>(
       this.spreadsheetId2,
       this.sheetName2,
       characterAttributesMapping,
