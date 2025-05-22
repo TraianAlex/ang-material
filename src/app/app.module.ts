@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,31 +24,24 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    WelcomeComponent,
-    ChartBaseComponent,
-    BarChartComponent,
-    LineChartComponent,
-    PieChartComponent,
-    DoughnutChartComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    MaterialModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase), // working only with "skipLibCheck": true tsconfig
-    AuthModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        SidenavListComponent,
+        WelcomeComponent,
+        ChartBaseComponent,
+        BarChartComponent,
+        LineChartComponent,
+        PieChartComponent,
+        DoughnutChartComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        // provideFirebaseApp(() => initializeApp(environment.firebase)),
+        // provideAuth(() => getAuth()),
+        // provideFirestore(() => getFirestore()),
+        AngularFireModule.initializeApp(environment.firebase), // working only with "skipLibCheck": true tsconfig
+        AuthModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}

@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
+import { HttpTestingController, TestRequest, provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { GsService } from './gs.service';
 import { googleSheetsAPIMockResponseData } from './google-sheets-db.service.mock-data';
 import { environment } from '@env/environment';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('GoogleSheetsDbService', () => {
   let service: GsService;
@@ -11,14 +12,16 @@ describe('GoogleSheetsDbService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         {
-          provide: environment.gsApiKey,
-          useValue: '1gSc_7WCmt-HuSLX01-Ev58VsiFuhbpYVo8krbPCvvqA',
+            provide: environment.gsApiKey,
+            useValue: '1gSc_7WCmt-HuSLX01-Ev58VsiFuhbpYVo8krbPCvvqA',
         },
-      ],
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
     service = TestBed.inject(GsService);
     httpMock = TestBed.inject(HttpTestingController);
   });
