@@ -6,12 +6,11 @@ import { Character, GsService, characterAttributesMapping } from '@app/google-sh
 import { environment } from '@env/environment';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule],
-  providers: [GsService],
-  selector: 'app-content',
-  templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss'],
+    imports: [CommonModule],
+    providers: [GsService],
+    selector: 'app-content',
+    templateUrl: './content.component.html',
+    styleUrls: ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
   private sheetService = inject(GsService);

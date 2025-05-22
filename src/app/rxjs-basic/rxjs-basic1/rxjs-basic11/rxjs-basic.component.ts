@@ -7,11 +7,10 @@ const SNOWMAN_IMAGE = '../assets/icons/snowman image.jpg';
 const SUN_IMAGE = '../assets/icons/sun.jpg';
 
 @Component({
-  selector: 'app-rxjs-basic',
-  standalone: true,
-  imports: [MaterialModule, RouterLink],
-  templateUrl: './rxjs-basic.component.html',
-  styleUrls: ['./rxjs-basic.component.scss'],
+    selector: 'app-rxjs-basic',
+    imports: [MaterialModule, RouterLink],
+    templateUrl: './rxjs-basic.component.html',
+    styleUrls: ['./rxjs-basic.component.scss']
 })
 export class RxjsBasic11Component implements OnInit {
   temperatureSubject1$ = new BehaviorSubject<number>(72);

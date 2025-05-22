@@ -9,11 +9,10 @@ interface Weather {
 }
 
 @Component({
-  selector: 'first-page',
-  templateUrl: './first-page.component.html',
-  styleUrls: ['./first-page.component.css'],
-  standalone: true,
-  imports: [MaterialModule],
+    selector: 'first-page',
+    templateUrl: './first-page.component.html',
+    styleUrls: ['./first-page.component.css'],
+    imports: [MaterialModule]
 })
 export class FirstPageComponent implements OnInit, OnDestroy {
   displayWeather: Weather[] = [];

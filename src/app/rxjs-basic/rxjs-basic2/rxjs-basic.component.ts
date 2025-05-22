@@ -4,10 +4,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '@app/material.module';
 
 @Component({
-  selector: 'app-rxjs-basic',
-  standalone: true,
-  imports: [CommonModule, MaterialModule, RouterLink, RouterOutlet],
-  templateUrl: './rxjs-basic.component.html',
-  styleUrls: ['./rxjs-basic.component.scss'],
+    selector: 'app-rxjs-basic',
+    imports: [CommonModule, MaterialModule, RouterLink, RouterOutlet],
+    templateUrl: './rxjs-basic.component.html',
+    styleUrls: ['./rxjs-basic.component.scss']
 })
 export class RxjsBasic2Component {}

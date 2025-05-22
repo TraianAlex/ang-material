@@ -7,9 +7,10 @@ type Department = {
 };
 
 @Component({
-  selector: 'app-message-new',
-  templateUrl: './message-new.component.html',
-  styleUrls: ['./message-new.component.scss'],
+    selector: 'app-message-new',
+    templateUrl: './message-new.component.html',
+    styleUrls: ['./message-new.component.scss'],
+    standalone: false
 })
 export class MessageNewComponent implements OnInit {
   firstFormGroup!: FormGroup;

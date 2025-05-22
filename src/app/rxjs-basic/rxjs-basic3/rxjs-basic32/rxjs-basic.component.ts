@@ -4,11 +4,10 @@ import { Subject, delay, exhaustMap, from, toArray } from 'rxjs';
 import { MaterialModule } from '../../../material.module';
 
 @Component({
-  selector: 'app-rxjs-basic',
-  standalone: true,
-  imports: [MaterialModule, RouterLink],
-  templateUrl: './rxjs-basic.component.html',
-  styleUrls: ['./rxjs-basic.component.scss'],
+    selector: 'app-rxjs-basic',
+    imports: [MaterialModule, RouterLink],
+    templateUrl: './rxjs-basic.component.html',
+    styleUrls: ['./rxjs-basic.component.scss']
 })
 export class RxjsBasic32Component implements OnInit {
   temperatureSubject$ = new Subject<number[]>();

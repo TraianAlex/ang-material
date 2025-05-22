@@ -77,7 +77,7 @@ export class TrainingService {
       date: new Date(),
       state: 'completed',
     });
-    this.runningExercise = null || ({} as Exercise);
+    this.runningExercise = ({} as Exercise);
     this.exerciseChanged.next(null);
   }
 
@@ -89,7 +89,7 @@ export class TrainingService {
       date: new Date(),
       state: 'cancelled',
     });
-    this.runningExercise = null || ({} as Exercise);
+    this.runningExercise = ({} as Exercise);
     this.exerciseChanged.next(null);
   }
 

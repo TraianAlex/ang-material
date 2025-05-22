@@ -6,12 +6,11 @@ import { GsService } from './services/gs.service';
 import { environment } from '@env/environment';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule],
-  providers: [GsService],
-  selector: 'app-google-sheets',
-  templateUrl: './google-sheets.component.html',
-  styleUrls: ['./google-sheets.component.scss'],
+    imports: [CommonModule],
+    providers: [GsService],
+    selector: 'app-google-sheets',
+    templateUrl: './google-sheets.component.html',
+    styleUrls: ['./google-sheets.component.scss']
 })
 export class GoogleSheetsComponent implements OnInit, OnDestroy {
   private sheetService = inject(GsService);

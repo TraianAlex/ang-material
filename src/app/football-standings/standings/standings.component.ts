@@ -5,9 +5,10 @@ import { Team } from '../models/team.model';
 import { StandingService } from '../services/standing.service';
 
 @Component({
-  selector: 'app-standings',
-  templateUrl: './standings.component.html',
-  styleUrls: ['./standings.component.scss'],
+    selector: 'app-standings',
+    templateUrl: './standings.component.html',
+    styleUrls: ['./standings.component.scss'],
+    standalone: false
 })
 export class StandingsComponent {
   columnsToDisplay = [

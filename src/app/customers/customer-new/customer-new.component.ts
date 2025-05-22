@@ -15,9 +15,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-customer-new',
-  templateUrl: './customer-new.component.html',
-  styleUrls: ['./customer-new.component.scss'],
+    selector: 'app-customer-new',
+    templateUrl: './customer-new.component.html',
+    styleUrls: ['./customer-new.component.scss'],
+    standalone: false
 })
 export class CustomerNewComponent implements OnInit {
   emailFormControl!: FormControl;

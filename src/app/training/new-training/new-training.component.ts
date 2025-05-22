@@ -8,9 +8,10 @@ import { UiService } from '@services/ui.service';
 import { Exercise } from '../exercise.model';
 
 @Component({
-  selector: 'app-new-training',
-  templateUrl: './new-training.component.html',
-  styleUrls: ['./new-training.component.scss'],
+    selector: 'app-new-training',
+    templateUrl: './new-training.component.html',
+    styleUrls: ['./new-training.component.scss'],
+    standalone: false
 })
 export class NewTrainingComponent implements OnInit, OnDestroy {
   // @Output() trainingStart = new EventEmitter<void>();

@@ -11,9 +11,10 @@ interface ArticleFlatNode {
 }
 
 @Component({
-  selector: 'app-articles',
-  templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss'],
+    selector: 'app-articles',
+    templateUrl: './articles.component.html',
+    styleUrls: ['./articles.component.scss'],
+    standalone: false
 })
 export class ArticlesComponent {
   treeControl = new FlatTreeControl(this._getLevel, this._isExpandable);

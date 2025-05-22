@@ -6,9 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ELEMENT_DATA, OrderType } from '../../data/mock-data';
 
 @Component({
-  selector: 'app-order-list',
-  templateUrl: './order-list.component.html',
-  styleUrls: ['./order-list.component.scss'],
+    selector: 'app-order-list',
+    templateUrl: './order-list.component.html',
+    styleUrls: ['./order-list.component.scss'],
+    standalone: false
 })
 export class OrderListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['action', 'orderNumber', 'orderDate', 'description', 'total', 'actions'];

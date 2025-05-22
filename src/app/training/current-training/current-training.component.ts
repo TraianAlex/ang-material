@@ -6,9 +6,10 @@ import { TrainingService } from '@services/training.service';
 import { StopTrainingDialogComponent } from '../stop-training-dialog/stop-training-dialog.component';
 
 @Component({
-  selector: 'app-current-training',
-  templateUrl: './current-training.component.html',
-  styleUrls: ['./current-training.component.scss'],
+    selector: 'app-current-training',
+    templateUrl: './current-training.component.html',
+    styleUrls: ['./current-training.component.scss'],
+    standalone: false
 })
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;

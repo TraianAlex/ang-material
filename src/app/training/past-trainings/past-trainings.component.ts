@@ -8,9 +8,10 @@ import { TrainingService } from '@services/training.service';
 import { Exercise } from '../exercise.model';
 
 @Component({
-  selector: 'app-past-trainings',
-  templateUrl: './past-trainings.component.html',
-  styleUrls: ['./past-trainings.component.scss'],
+    selector: 'app-past-trainings',
+    templateUrl: './past-trainings.component.html',
+    styleUrls: ['./past-trainings.component.scss'],
+    standalone: false
 })
 export class PastTrainingsComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns = ['date', 'name', 'duration', 'calories', 'state'];

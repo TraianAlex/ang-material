@@ -6,9 +6,10 @@ import { AuthService } from '@services/auth.service';
 import { UiService } from '@services/ui.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+    selector: 'app-signup',
+    templateUrl: './signup.component.html',
+    styleUrls: ['./signup.component.scss'],
+    standalone: false
 })
 export class SignupComponent implements OnInit, OnDestroy {
   maxDate!: Date;
