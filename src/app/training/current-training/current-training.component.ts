@@ -12,7 +12,7 @@ import { StopTrainingDialogComponent } from '../stop-training-dialog/stop-traini
 })
 export class CurrentTrainingComponent implements OnInit {
   progress = 0;
-  timer!: number | NodeJS.Timer;
+  timer!: any;
   // @Output() trainingExit = new EventEmitter();
 
   constructor(private dialog: MatDialog, private trainingService: TrainingService) {}
