@@ -53,4 +53,8 @@ export class ContentComponent implements OnInit {
       'Active'
     );
   }
+
+  writeTestData(): void {
+    this.sheetService.updateData();
+  }
 }

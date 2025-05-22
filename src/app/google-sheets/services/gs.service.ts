@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError, map, catchError } from 'rxjs';
+import { Observable, throwError, map, catchError, tap } from 'rxjs';
 
 import { environment } from '@env/environment';
 
@@ -311,6 +311,45 @@ export class GsService {
     }
     return throwError('Something bad happened; please try again later.');
   }
+
+  // WRITE
+
+  spreadsheetId = environment.gsSheetId;
+  sheetName = 'test1';
+
+  updateData() {
+    // https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/update
+    //https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}??valueInputOption=USER_ENTERED
+    // `${environment.gsEndPoint}/${this.spreadsheetId}/values/${this.sheetName}!A2:B3??valueInputOption=USER_ENTERED`
+    // {
+    //   "range": string,
+    //   "majorDimension": enum (Dimension),
+    //   "values": [
+    //     array
+    //   ]
+    // }
+    return this.http
+      .put(
+        `https://sheets.googleapis.com/v4/spreadsheets/1pt4khy_xZtAyl4lm9ejDLuF-HkuChFqKuSxFuhbeVuI/values/test1!A1:B2?valueInputOption=USER_ENTERED`,
+        {
+          range: 'A1:B2',
+          majorDimension: 'ROWS',
+          values: [
+            ['Hello', 'World'],
+            ['Hello', 'World'],
+          ],
+        }
+      )
+      .pipe(
+        tap((response) => console.log('response', response)),
+        catchError(this.handleError)
+      );
+  }
+
+  // writeData(spreadsheetId: string, range: string, data: any[][]): Observable<any> {
+  //   const url = `${this.baseUrl}/${spreadsheetId}/values/${range}?valueInputOption=USER_ENTERED`;
+  //   return this.http.put(url, { values: data });
+  // }
 }
 
 // The attributesMapping maps the Google spreadsheet columns to to your outcome object.
