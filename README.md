@@ -37,4 +37,5 @@ or from the project folder:
 json-server --watch src/assets/db.json --port 8080 --routes src/assets/routes.json
 port and routes are optional depending on your api endpoint path
 
-node 18.12.1
+node v = 20.11.1
+Angular 19.2
